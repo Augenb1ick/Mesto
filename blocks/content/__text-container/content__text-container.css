@@ -1,0 +1,7 @@
+.content__text-container {
+    display: flex;
+    flex-direction: row;
+    width: 246px;
+    margin: 20px auto;
+    justify-content: space-between;
+}

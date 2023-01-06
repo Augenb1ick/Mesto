@@ -1,0 +1,25 @@
+.profile__info-add-button {
+    width: 282px;
+    height: 50px;
+    border: 1px solid #FFFFFF;
+    background: url(../../../images/plus-vector.svg) black no-repeat center;
+    margin-bottom: 36px;
+    cursor: pointer;
+    transition: opacity 0.4s ease;
+}
+
+.profile__info-add-button:hover {
+    opacity: 0.6;
+}
+
+@media screen and (min-width: 768px) {
+    .profile__info-add-button {
+        width: 150px;
+        position: absolute;
+        right: 0;
+        top: 35px;
+        
+
+    }
+    
+}

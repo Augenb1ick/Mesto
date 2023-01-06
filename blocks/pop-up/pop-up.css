@@ -1,0 +1,24 @@
+.pop-up {
+    width: 282px;
+    height: 322px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    position: absolute;
+    top: 123px;
+    left: calc(50% - 141px);
+    z-index: 5;
+    
+}
+
+@media screen and (min-width: 768px) {
+    .pop-up {
+        top: 195px;
+        left: calc(50% - 215px);
+        width: 430px;
+        height: 330px;
+        
+    }
+    
+}

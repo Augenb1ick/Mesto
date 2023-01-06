@@ -1,17 +1,17 @@
-# Проект: Место
+# Проект: Mesto
 
 ### Обзор
+Частично создан проект Mesto.
 
-* Figma
-* Картинки
+### Технологии
+- CSS Grid Layout;
+- Адаптивная верстка;
+- Дерективы @media;
+- Базовый JavasScript.
 
 **Figma**
 
-* [Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
+* [Ссылка на макет в Figma](hhttps://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=28212%3A2&t=g5CLIaQsuENLBl6v-0)
 
-**Картинки**
-
-Доставать картинки предстоит из Фигмы. Это расхожая практика, поэтому полезно потренироваться.
-Не забудьте [оптимизировать картинки](https://tinypng.com/), чтобы ваш сайт загружался быстрее.
-
-Удачи!
+**GitHub Pages**
+* [Ссылка на проект в GitHub Pages](https://augenb1ick.github.io/mesto/)

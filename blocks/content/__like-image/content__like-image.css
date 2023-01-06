@@ -1,0 +1,13 @@
+.content__like-image {
+    transition: opacity 0.4s ease;
+    cursor: pointer;
+}
+
+.content__like-image:hover {
+    opacity: 0.5;
+}
+
+
+
+
+

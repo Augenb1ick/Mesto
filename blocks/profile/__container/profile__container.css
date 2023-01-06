@@ -1,0 +1,15 @@
+.profile__container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+@media screen and (min-width: 768px) {
+    .profile__container {
+        gap: 18px;
+        position: relative;
+    }
+    
+}
