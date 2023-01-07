@@ -8,13 +8,21 @@
 </head>
 <body class="body">
     <div class="root">
-        <div class="pop-up-container" tabindex="1">
-            
-        </div>
+        <form class="pop-up"> 
+            <div class="pop-up__container">
+                <div class="pop-up__content">
+                    <h2 class="pop-up__heading">Редактировать профиль</h2>
+                    <input type="text" class="pop-up__text pop-up__text_type_name">
+                    <input type="text" class="pop-up__text pop-up__text_type_profession">
+                    <button class="pop-up__submit-btn" type="submit">Сохранить</button>
+                </div>
+                <button class="pop-up__close-btn" type="button"></button>
+            </div>
+        </form>
         <header class="header">
             <img class="header__logo" src="./images/logo.svg" alt="лого">
         </header>
-        <main class="main">
+        <main>
             <div class="profile">
                 <img class="profile__image" src="./images/kusto.jpg" alt="Фото Жак-Ив Кусто">
                 <div class="profile__info">

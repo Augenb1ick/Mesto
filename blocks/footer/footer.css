@@ -8,12 +8,10 @@
     .footer {
         max-width: 600px;
     }
-    
 }
 
 @media screen and (min-width: 1024px) {
     .footer {
         max-width: 880px;
     }
-    
 }

@@ -8,19 +8,16 @@
 
 @media screen and (min-width: 768px) {
     .profile {
-        flex-direction: row;
-        
+        display: grid;
+        grid-template-columns: 120px 1fr 1fr;
         max-width: 600px;
         margin-top: 40px;
         margin-bottom: 51px;
     }
-    
 }
 
 @media screen and (min-width: 1024px) {
     .profile {
-        
         max-width: 880px;
     }
-    
 }

@@ -10,7 +10,6 @@
         grid-template-columns: repeat(2, 1fr);
         max-width: 600px;
     }
-    
 }
 
 @media screen and (min-width: 1024px) {
@@ -18,5 +17,4 @@
         grid-template-columns: repeat(3, 1fr);
         max-width: 880px;
     }
-    
 }

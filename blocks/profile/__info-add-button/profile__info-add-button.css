@@ -15,11 +15,8 @@
 @media screen and (min-width: 768px) {
     .profile__info-add-button {
         width: 150px;
-        position: absolute;
-        right: 0;
-        top: 35px;
-        
-
+        justify-self: end;
+        align-self: center;
+        margin: 0;
     }
-    
 }

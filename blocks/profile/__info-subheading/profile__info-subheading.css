@@ -3,13 +3,11 @@
     padding: 0;
     margin-top: 14px;
     margin-bottom: 36px;
-
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
     text-align: center;
-
     color: #FFFFFF;
 }
 
@@ -18,7 +16,6 @@
         margin: 0;
         text-align: start;  
     }
-    
 }
 
 @media screen and (min-width: 1024px) {
@@ -28,5 +25,4 @@
         font-size: 18px;
         line-height: 22px;  
     }
-    
 }
