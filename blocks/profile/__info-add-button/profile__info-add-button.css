@@ -1,11 +1,14 @@
 .profile__info-add-button {
     width: 282px;
     height: 50px;
-    border: 1px solid #FFFFFF;
-    background: url(../../../images/plus-vector.svg) black no-repeat center;
+    border: 2px solid #FFFFFF;
+    border-radius: 2px;
+    background: url(../../../images/plus-vector.svg) transparent no-repeat center;
+    background-size: 16px;
     margin-bottom: 36px;
     cursor: pointer;
     transition: opacity 0.4s ease;
+    padding: 0;
 }
 
 .profile__info-add-button:hover {
@@ -18,5 +21,11 @@
         justify-self: end;
         align-self: center;
         margin: 0;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .profile__info-add-button {
+        background-size: 22px;
     }
 }

@@ -1,21 +1,21 @@
-.pop-up__text {
+.popup__text {
     border: none;
     border-bottom: 1px solid rgb(0, 0, 0, 0.2);
     outline: 0;
     margin-bottom: 30px;
     font-size: 14px;
     line-height: 17px;
-    padding: 0;
+    padding: 0 0 13px 0;
+    width: 238px;
 
 }
 
-.pop-up__text:focus {
+.popup__text:focus {
     outline: 2px groove rgb(6, 183, 196);
 }
 
 @media screen and (min-width: 768px) {
-    .pop-up__text {
+    .popup__text {
         width: 358px;
-        height: 30px;
     }
 }

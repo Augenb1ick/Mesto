@@ -1,0 +1,20 @@
+.content__like-button {
+    background: url(../../../images/like-Vector.svg) no-repeat center;
+    border: none;
+    width: 22px;
+    transition: opacity 0.4s ease;
+    cursor: pointer;
+}
+
+.content__like-button:hover {
+    opacity: 0.5;
+}
+
+
+
+
+
+
+
+
+

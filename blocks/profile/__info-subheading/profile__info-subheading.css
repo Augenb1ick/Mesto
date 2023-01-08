@@ -1,14 +1,15 @@
 .profile__info-subheading {
-    margin: 0;
+    margin: 6px 0 36px 0;
     padding: 0;
-    margin-top: 14px;
-    margin-bottom: 36px;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
     text-align: center;
     color: #FFFFFF;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 @media screen and (min-width: 768px) {
@@ -20,8 +21,6 @@
 
 @media screen and (min-width: 1024px) {
     .profile__info-subheading {
-        margin: 0;
-        text-align: start;
         font-size: 18px;
         line-height: 22px;  
     }
