@@ -37,15 +37,15 @@ function handleFormSubmit(evt) {
     popUpClose();
 }
 
-function popUPaddOpen() {
+function openPopUPadd() {
     popupAdd.classList.add('popup_opened');
 }
 
-function popUPaddClose() {
+function closePopUPadd() {
     popupAdd.classList.remove('popup_opened');
 }
 
-function popUpAddSubmit(evt) {
+function submitPopUpAdd(evt) {
     evt.preventDefault();
 
     const newPhoto = newCardPhoto.value;
@@ -55,7 +55,7 @@ function popUpAddSubmit(evt) {
     
     content.prepend(card);
        
-    popUPaddClose();
+    closePopUPadd();
     popupAddForm.reset(); 
 }
 
@@ -107,14 +107,14 @@ function createCard(item) {
     });
     
     card.querySelector('.content__image').addEventListener('click', () => {
-        photopopUp(item);
+        openPhotopopUp(item);
         
     });
     
     return card;
 }
 
-function photopopUp(item) {
+function openPhotopopUp(item) {
     console.log(item);
     document.querySelector('.popup-photo__image').src = item.link;
     document.querySelector('.popup-photo__text').textContent = item.name;
@@ -125,9 +125,9 @@ function photopopUp(item) {
 }
 
 renderContent();
-addContentButton.addEventListener('click', popUPaddOpen);
-addContentCloseBtn.addEventListener('click', popUPaddClose);
-popupAddForm.addEventListener('submit', popUpAddSubmit);
+addContentButton.addEventListener('click', openPopUPadd);
+addContentCloseBtn.addEventListener('click', closePopUPadd);
+popupAddForm.addEventListener('submit', submitPopUpAdd);
 
 editButton.addEventListener('click', popUp);
 closeButton.addEventListener('click', popUpClose);
