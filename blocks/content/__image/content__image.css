@@ -1,4 +1,7 @@
 .content__image {
-    max-width: 282px;
+    width: 282px;
+    height: 282px;
     border-radius: 10px 10px 0 0;
+    object-fit: cover;
+    object-position: top;
 }

@@ -1,4 +1,6 @@
-.popup_opened {
+.popup-photo_opened {
+    flex-direction: column;
+    justify-content: center;
     visibility: visible;
     opacity: 1;
     transition: visibility 0s, opacity 0.3s linear;

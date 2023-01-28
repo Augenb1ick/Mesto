@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mesto</title>
   <link rel="stylesheet" href="./pages/index.css">
+  <script src="./scripts/index.js" defer></script>
 </head>
 <body class="body">
     <div class="root">
@@ -24,48 +25,6 @@
                 <button class="profile__info-add-button" type="button"></button>
             </section>
             <section class="content">
-                <div class="content__container">
-                    <img class="content__image" src="./images/karachaevsk.jpg" alt="Фото Карачаевска">
-                    <div class="content__text-container">
-                        <h2 class="content__text">Карачаевск</h2>
-                        <button class="content__like-button" type="button"></button>
-                    </div>
-                </div>
-                <div class="content__container">
-                    <img class="content__image" src="./images/elbrus.png" alt="Фото Эльбруса">
-                    <div class="content__text-container">
-                        <h2 class="content__text">Гора Эльбрус</h2>
-                        <button class="content__like-button" type="button"></button>
-                    </div>
-                </div>
-                <div class="content__container">
-                    <img class="content__image" src="./images/donbay.png" alt="Фото Домбая">
-                    <div class="content__text-container">
-                        <h2 class="content__text">Домбай</h2>
-                        <button class="content__like-button" type="button"></button>
-                    </div>
-                </div>
-                <div class="content__container">
-                    <img class="content__image" src="./images/karachaevsk.jpg" alt="Фото Карачаевска">
-                    <div class="content__text-container">
-                        <h2 class="content__text">Карачаевск</h2>
-                        <button class="content__like-button" type="button"></button>
-                    </div>
-                </div>
-                <div class="content__container">
-                    <img class="content__image" src="./images/elbrus.png" alt="Фото Эльбруса">
-                    <div class="content__text-container">
-                        <h2 class="content__text">Гора Эльбрус</h2>
-                        <button class="content__like-button" type="button"></button>
-                    </div>
-                </div>
-                <div class="content__container">
-                    <img class="content__image" src="./images/donbay.png" alt="Фото Домбая">
-                    <div class="content__text-container">
-                        <h2 class="content__text">Домбай</h2>
-                        <button class="content__like-button" type="button"></button>
-                    </div>
-                </div>
             </section>
         </main>
         <footer class="footer">
@@ -83,6 +42,33 @@
             <button class="popup__close-btn" type="button" name="close"></button>
         </div>
     </div>
-    <script src="./scripts/index.js"></script>
+    <div class="popup" id="popup-add-content"> 
+        <div class="popup__container">
+            <form class="popup__content" name="add-content" id="add-content">
+                <h2 class="popup__heading">Новое место</h2>
+                <input type="text" class="popup__text" id="new-card-name" name="add-name" placeholder="Название" onclick="reset">
+                <input type="text" class="popup__text" id="new-card-photo" name="add-photo" placeholder="Ссылка на картинку">
+                <button class="popup__submit-btn" type="submit" name="add-btn" id="add-btn">Создать</button>
+            </form>
+            <button class="popup__close-btn" type="button" name="add-content-close-btn" id="add-content-close-btn"></button>
+        </div>
+    </div>
+    <template id="card-template">
+        <div class="content__container">
+            <img class="content__image">
+            <div class="content__text-container">
+                <h2 class="content__text"></h2>
+                <button class="content__like-button" type="button"></button>
+            </div>
+            <button class="content__delete-button" type="button"></button>
+        </div>
+    </template>
+    <div class="popup-photo">
+        <div class="popup-photo__container">
+            <img class="popup-photo__image">
+            <p class="popup-photo__text"></p>
+            <button class="popup__close-btn" type="button" name="popup-photo-close-btn" id="popup-photo-close-btn"></button>
+        </div>
+    </div>
 </body>
 </html>
