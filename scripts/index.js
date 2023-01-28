@@ -1,64 +1,22 @@
-let editButton = document.querySelector('.profile__info-edit-button');
-let theName = document.querySelector('.profile__info-heading');
-let theProfession = document.querySelector('.profile__info-subheading');
-let newName = document.querySelector('.popup__text_type_name');
-let newProfession = document.querySelector('.popup__text_type_profession');
-let newCardPhoto = document.querySelector('#new-card-photo')
-let newCardName = document.querySelector('#new-card-name')
-let closeButton = document.querySelector('.popup__close-btn');
-let addContentCloseBtn = document.querySelector('#add-content-close-btn');
-let popup = document.querySelector('.popup');
-let popupAdd = document.querySelector('#popup-add-content')
-let popupForm = document.querySelector('.popup__content');
-let popupAddForm = document.querySelector('#add-content');
-let likeButtons = document.querySelectorAll('.content__like-button');
-let addContentButton = document.querySelector('.profile__info-add-button');
+const buttonEditProfile = document.querySelector('.profile__info-edit-button');
+const theName = document.querySelector('.profile__info-heading');
+const theProfession = document.querySelector('.profile__info-subheading');
+const newName = document.querySelector('.popup__text_type_name');
+const newProfession = document.querySelector('.popup__text_type_profession');
+const newCardPhoto = document.querySelector('#new-card-photo')
+const newCardName = document.querySelector('#new-card-name')
+const buttonCloseEditProfile = document.querySelector('.popup__close-btn');
+const buttonCloseAddContent = document.querySelector('#add-content-close-btn');
+const popupEditProfile = document.querySelector('.popup_edit-profile');
+const popupAddContent = document.querySelector('.popup_add-content');
+const popupPhoto = document.querySelector('.popup-photo');
+const popupAddForm = document.querySelector('#add-content');
+const buttonAddContent = document.querySelector('.profile__info-add-button');
 const template = document.querySelector('#card-template').content.querySelector('.content__container');
 const content = document.querySelector('.content');
-
-
-function popUp() {
-    popup.classList.add('popup_opened')
-    
-    newName.value = theName.textContent;
-    newProfession.value = theProfession.textContent;
-}
-
-function popUpClose() {
-    popup.classList.remove('popup_opened');
-}
-
-function handleFormSubmit(evt) {
-    evt.preventDefault();
-
-    theName.textContent = newName.value;
-    theProfession.textContent = newProfession.value;
-
-    popUpClose();
-}
-
-function openPopUPadd() {
-    popupAdd.classList.add('popup_opened');
-}
-
-function closePopUPadd() {
-    popupAdd.classList.remove('popup_opened');
-}
-
-function submitPopUpAdd(evt) {
-    evt.preventDefault();
-
-    const newPhoto = newCardPhoto.value;
-    const newName = newCardName.value;
-
-    const card = createCard({ name: newName, link: newPhoto });
-    
-    content.prepend(card);
-       
-    closePopUPadd();
-    popupAddForm.reset(); 
-}
-
+const popupPhotoImage = document.querySelector('.popup-photo__image');
+const popupPhotoText = document.querySelector('.popup-photo__text');
+const popupPhotoCloseBtn = document.querySelector('#popup-photo-close-btn');
 const initialCards = [
     {
       name: 'Архыз',
@@ -86,19 +44,51 @@ const initialCards = [
     }
 ];
 
-function renderContent() {
+function openPopup(currentPopup) {
+    currentPopup.classList.add('popup_opened');
+};
+
+function closePopup(currentPopup) {
+    currentPopup.classList.remove('popup_opened');
+};
+
+function submitEditProfileForm(evt) {
+    evt.preventDefault();
+
+    theName.textContent = newName.value;
+    theProfession.textContent = newProfession.value;
+
+    closePopup(popupEditProfile);
+};
+
+function submitAddContentForm(evt) {
+    evt.preventDefault();
+
+    const newPhoto = newCardPhoto.value;
+    const newName = newCardName.value;
+
+    const card = createCard({ name: newName, link: newPhoto });
+    
+    content.prepend(card);
+       
+    closePopup(popupAddContent);
+    popupAddForm.reset(); 
+};
+
+function renderInitialCards() {
     const cards = initialCards.map((item) => {
         return createCard(item);
     });
 
     content.append(...cards);
-}
+};
 
 function createCard(item) {
     const card = template.cloneNode(true);
+    const contentImage = card.querySelector('.content__image');
+    contentImage.src = item.link;
+    contentImage.alt = 'Картинка ' + item.name;
     card.querySelector('.content__text').textContent = item.name;
-    card.querySelector('.content__image').src = item.link;
-    card.querySelector('.content__image').alt = 'Картинка ' + item.name;
     card.querySelector('.content__like-button').addEventListener('click', (evt) => {
         evt.target.classList.toggle('content__like-button_type_active');
     });
@@ -106,32 +96,47 @@ function createCard(item) {
         card.remove();
     });
     
-    card.querySelector('.content__image').addEventListener('click', () => {
-        openPhotopopUp(item);
-        
+    contentImage.addEventListener('click', () => {
+        renderPhotoPopUp(item);
     });
     
     return card;
+};
+
+function renderPhotoPopUp(item) {
+    popupPhotoImage.src = item.link;
+    popupPhotoImage.alt = 'Картинка' + item.name;
+    popupPhotoText.textContent = item.name;
+    openPopup(popupPhoto);
 }
 
-function openPhotopopUp(item) {
-    console.log(item);
-    document.querySelector('.popup-photo__image').src = item.link;
-    document.querySelector('.popup-photo__text').textContent = item.name;
-    document.querySelector('#popup-photo-close-btn').addEventListener('click', () => {
-        document.querySelector('.popup-photo').classList.remove('popup-photo_opened');
-    });
-    document.querySelector('.popup-photo').classList.add('popup-photo_opened')
-}
+renderInitialCards();
 
-renderContent();
-addContentButton.addEventListener('click', openPopUPadd);
-addContentCloseBtn.addEventListener('click', closePopUPadd);
-popupAddForm.addEventListener('submit', submitPopUpAdd);
+buttonEditProfile.addEventListener('click', () => {
+    openPopup(popupEditProfile);
+    newName.value = theName.textContent;
+    newProfession.value = theProfession.textContent;
+});
 
-editButton.addEventListener('click', popUp);
-closeButton.addEventListener('click', popUpClose);
-popupForm.addEventListener('submit', handleFormSubmit);
+buttonCloseEditProfile.addEventListener('click', () => {
+    closePopup(popupEditProfile);
+});
+
+popupEditProfile.addEventListener('submit', submitEditProfileForm);
+
+buttonAddContent.addEventListener('click', () => {
+    openPopup(popupAddContent);
+});
+
+buttonCloseAddContent.addEventListener('click', () => {
+    closePopup(popupAddContent);
+});
+
+popupAddForm.addEventListener('submit', submitAddContentForm);
+
+popupPhotoCloseBtn.addEventListener('click', () => {
+    closePopup(popupPhoto);
+});
 
 
 

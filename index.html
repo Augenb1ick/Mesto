@@ -31,18 +31,18 @@
             <p class="footer__copyright">@ 2023 Mesto Russia</p>
         </footer>
     </div>
-    <div class="popup"> 
+    <div class="popup popup_edit-profile"> 
         <div class="popup__container">
             <form class="popup__content" name="edit-content">
                 <h2 class="popup__heading">Редактировать профиль</h2>
-                <input type="text" class="popup__text popup__text_type_name" name="edit-name">
-                <input type="text" class="popup__text popup__text_type_profession" name="edit-profession">
+                <input type="text" class="popup__text popup__text_type_name" name="edit-name" placeholder="Имя">
+                <input type="text" class="popup__text popup__text_type_profession" name="edit-profession" placeholder="Вид деятельности">
                 <button class="popup__submit-btn" type="submit" name="submit">Сохранить</button>
             </form>
             <button class="popup__close-btn" type="button" name="close"></button>
         </div>
     </div>
-    <div class="popup" id="popup-add-content"> 
+    <div class="popup popup_add-content"> 
         <div class="popup__container">
             <form class="popup__content" name="add-content" id="add-content">
                 <h2 class="popup__heading">Новое место</h2>
@@ -63,7 +63,7 @@
             <button class="content__delete-button" type="button"></button>
         </div>
     </template>
-    <div class="popup-photo">
+    <div class="popup popup-photo">
         <div class="popup-photo__container">
             <img class="popup-photo__image">
             <p class="popup-photo__text"></p>
