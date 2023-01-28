@@ -40,3 +40,4 @@
 @import url(../blocks/popup-photo/_opened/popup-photo_opened.css);
 @import url(../blocks/popup-photo/__image/popup-photo__image.css);
 @import url(../blocks/popup-photo/__container/popup-photo__container.css);
+@import url(../blocks/popup-photo/__close-btn/popup-photo__close-btn.css);
