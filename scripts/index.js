@@ -1,10 +1,10 @@
 const buttonEditProfile = document.querySelector('.profile__info-edit-button');
-const theName = document.querySelector('.profile__info-heading');
-const theProfession = document.querySelector('.profile__info-subheading');
-const newName = document.querySelector('.popup__text_type_name');
-const newProfession = document.querySelector('.popup__text_type_profession');
-const newCardPhoto = document.querySelector('#new-card-photo')
-const newCardName = document.querySelector('#new-card-name')
+const userName = document.querySelector('.profile__info-heading');
+const userProfession = document.querySelector('.profile__info-subheading');
+const inputUserName = document.querySelector('.popup__text_type_name');
+const inputUserProfession = document.querySelector('.popup__text_type_profession');
+const inputCardLink = document.querySelector('#new-card-photo')
+const inputCardName = document.querySelector('#new-card-name')
 const buttonCloseEditProfile = document.querySelector('.popup__close-btn');
 const buttonCloseAddContent = document.querySelector('#add-content-close-btn');
 const popupEditProfile = document.querySelector('.popup_edit-profile');
@@ -55,8 +55,8 @@ function closePopup(currentPopup) {
 function submitEditProfileForm(evt) {
     evt.preventDefault();
 
-    theName.textContent = newName.value;
-    theProfession.textContent = newProfession.value;
+    userName.textContent = inputUserName.value;
+    userProfession.textContent = inputUserProfession.value;
 
     closePopup(popupEditProfile);
 };
@@ -64,8 +64,8 @@ function submitEditProfileForm(evt) {
 function submitAddContentForm(evt) {
     evt.preventDefault();
 
-    const newPhoto = newCardPhoto.value;
-    const newName = newCardName.value;
+    const newPhoto = inputCardLink.value;
+    const newName = inputCardName.value;
 
     const card = createCard({ name: newName, link: newPhoto });
     
@@ -114,8 +114,8 @@ renderInitialCards();
 
 buttonEditProfile.addEventListener('click', () => {
     openPopup(popupEditProfile);
-    newName.value = theName.textContent;
-    newProfession.value = theProfession.textContent;
+    inputUserName.value = userName.textContent;
+    inputUserProfession.value = userProfession.textContent;
 });
 
 buttonCloseEditProfile.addEventListener('click', () => {
