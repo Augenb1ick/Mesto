@@ -44,25 +44,33 @@ const initialCards = [
     }
 ];
 
-
 function openPopup(currentPopup) {
     currentPopup.classList.add('popup_opened');
 
-    document.querySelector('.body').addEventListener('mousedown', (e) => {
-        if (e.target.classList.contains('popup_opened')) {
+    const closeOnOverlay = (evt) => {
+        if (evt.target.classList.contains('popup_opened')) {
             closePopup(currentPopup);
+            removeEventListeners();
         }
-    });
+    }
 
-    document.querySelector('.body').addEventListener('keydown', (event) => {
-        if (event.keyCode === 27) {
+    const closeOnEscape = (evt) => {
+        if (evt.key === 'Escape') {
             closePopup(currentPopup);
+            removeEventListeners();
         }
-    });
+    }
+
+    const removeEventListeners = () => {
+        document.removeEventListener("mousedown", closeOnOverlay);
+        document.removeEventListener("keydown", closeOnEscape);
+    }
+
+    document.addEventListener('mousedown', closeOnOverlay);
+    document.addEventListener('keydown', closeOnEscape);
 };
 
-function closePopup(currentPopup) {
-    currentPopup.classList.remove('popup_opened');
+const resetPopup = (currentPopup) => {
     Array.from(currentPopup.querySelectorAll('.popup__text-error')).forEach((element) => {
         element.textContent = '';
     })
@@ -76,7 +84,15 @@ function closePopup(currentPopup) {
         element.classList.add('popup__submit-btn_disabled')
     })
 
-    popupAddForm.reset();
+    const currentform = currentPopup.querySelector('.popup__content')
+    currentform.reset();
+}
+
+
+function closePopup(currentPopup) {
+    currentPopup.classList.remove('popup_opened');
+    resetPopup(currentPopup);
+
 };
 
 function submitEditProfileForm(evt) {
@@ -141,9 +157,9 @@ function renderPhotoPopUp(item) {
 renderInitialCards();
 
 buttonEditProfile.addEventListener('click', () => {
-    openPopup(popupEditProfile);
     inputUserName.value = userName.textContent;
     inputUserProfession.value = userProfession.textContent;
+    openPopup(popupEditProfile);
 });
 
 buttonCloseEditProfile.addEventListener('click', () => {
