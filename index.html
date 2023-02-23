@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mesto</title>
   <link rel="stylesheet" href="./pages/index.css">
-  <script src="./scripts/index.js" defer></script>
 </head>
 <body class="body">
     <div class="root">
@@ -33,10 +32,12 @@
     </div>
     <div class="popup popup_edit-profile"> 
         <div class="popup__container">
-            <form class="popup__content" name="edit-content">
+            <form class="popup__content" name="edit" novalidate>
                 <h2 class="popup__heading">Редактировать профиль</h2>
-                <input type="text" class="popup__text popup__text_type_name" name="edit-name" placeholder="Имя">
-                <input type="text" class="popup__text popup__text_type_profession" name="edit-profession" placeholder="Вид деятельности">
+                <input type="text" class="popup__text popup__text_type_name" name="edit-name" id="edit-name" placeholder="Имя" minlength="2" maxlength="40" required>
+                <span class="popup__text-error edit-name-error"></span>
+                <input type="text" class="popup__text popup__text_type_profession" name="edit-profession" id="edit-profession" placeholder="О себе" minlength="2" maxlength="400" required>
+                <span class="popup__text-error edit-profession-error"></span>
                 <button class="popup__submit-btn" type="submit" name="submit">Сохранить</button>
             </form>
             <button class="popup__close-btn" type="button" name="close"></button>
@@ -44,11 +45,13 @@
     </div>
     <div class="popup popup_add-content"> 
         <div class="popup__container">
-            <form class="popup__content" name="add-content" id="add-content">
-                <h2 class="popup__heading">Новое место</h2>
-                <input type="text" class="popup__text" id="new-card-name" name="add-name" placeholder="Название" onclick="reset">
-                <input type="text" class="popup__text" id="new-card-photo" name="add-photo" placeholder="Ссылка на картинку">
-                <button class="popup__submit-btn" type="submit" name="add-btn" id="add-btn">Создать</button>
+            <form class="popup__content" name="add" id="add-content" novalidate>
+                <h2 class="popup__heading">Новое место</h2> 
+                <input type="text" class="popup__text popup__text-name" id="add-name" name="add-name" placeholder="Название" minlength="2" maxlength="30" required onclick="reset">
+                <span class="popup__text-error add-name-error"></span>
+                <input type="url" class="popup__text popup__text-image" id="add-photo" name="add-photo" placeholder="Ссылка на картинку" required>
+                <span class="popup__text-error add-photo-error"></span>
+                <button class="popup__submit-btn popup__submit-btn_disabled" type="submit" name="add-btn" id="add-btn" disabled>Создать</button>
             </form>
             <button class="popup__close-btn" type="button" name="add-content-close-btn" id="add-content-close-btn"></button>
         </div>
@@ -70,5 +73,7 @@
             <button class="popup-photo__close-btn" type="button" name="popup-photo-close-btn" id="popup-photo-close-btn"></button>
         </div>
     </div>
+    <script defer src="./scripts/validate.js"></script>
+    <script defer src="./scripts/index.js"></script>
 </body>
 </html>

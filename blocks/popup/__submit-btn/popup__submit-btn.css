@@ -2,7 +2,7 @@
     font-family: "Inter", "Arial", "Helvetica", sans-serif;
     width: 238px;
     height: 46px;
-    margin: 15px auto 0 auto;
+    margin: 13px auto 0 auto;
     background: #000000;
     border-radius: 2px;
     font-style: normal;
@@ -16,7 +16,7 @@
     padding: 0;
 }
 
-.popup__submit-btn:hover {
+.popup__submit-btn:not(.popup__submit-btn_disabled):hover {
     opacity: 0.8;
 }
 

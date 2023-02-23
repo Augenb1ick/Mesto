@@ -3,8 +3,8 @@ const userName = document.querySelector('.profile__info-heading');
 const userProfession = document.querySelector('.profile__info-subheading');
 const inputUserName = document.querySelector('.popup__text_type_name');
 const inputUserProfession = document.querySelector('.popup__text_type_profession');
-const inputCardLink = document.querySelector('#new-card-photo')
-const inputCardName = document.querySelector('#new-card-name')
+const inputCardLink = document.querySelector('.popup__text-image')
+const inputCardName = document.querySelector('.popup__text-name')
 const buttonCloseEditProfile = document.querySelector('.popup__close-btn');
 const buttonCloseAddContent = document.querySelector('#add-content-close-btn');
 const popupEditProfile = document.querySelector('.popup_edit-profile');
@@ -44,12 +44,39 @@ const initialCards = [
     }
 ];
 
+
 function openPopup(currentPopup) {
     currentPopup.classList.add('popup_opened');
+
+    document.querySelector('.body').addEventListener('mousedown', (e) => {
+        if (e.target.classList.contains('popup_opened')) {
+            closePopup(currentPopup);
+        }
+    });
+
+    document.querySelector('.body').addEventListener('keydown', (event) => {
+        if (event.keyCode === 27) {
+            closePopup(currentPopup);
+        }
+    });
 };
 
 function closePopup(currentPopup) {
     currentPopup.classList.remove('popup_opened');
+    Array.from(currentPopup.querySelectorAll('.popup__text-error')).forEach((element) => {
+        element.textContent = '';
+    })
+
+    Array.from(currentPopup.querySelectorAll('.popup__text')).forEach((element) => {
+        element.classList.remove('popup__text_type_error');
+    })
+
+    Array.from(currentPopup.querySelectorAll('.popup__submit-btn')).forEach((element) => {
+        element.setAttribute('disabled', 'disabled');
+        element.classList.add('popup__submit-btn_disabled')
+    })
+
+    popupAddForm.reset();
 };
 
 function submitEditProfileForm(evt) {
@@ -101,6 +128,7 @@ function createCard(item) {
     });
     
     return card;
+
 };
 
 function renderPhotoPopUp(item) {
@@ -137,6 +165,7 @@ popupAddForm.addEventListener('submit', submitAddContentForm);
 popupPhotoCloseBtn.addEventListener('click', () => {
     closePopup(popupPhoto);
 });
+
 
 
 
