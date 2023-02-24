@@ -40,14 +40,13 @@ const setEventListeners = (formElement, obj) => {
   const inputList = Array.from(formElement.querySelectorAll(obj.inputSelector));
   const buttonElement = formElement.querySelector(obj.submitButtonSelector);
   
-  // toggleButtonState(inputList, buttonElement, obj)
+  toggleButtonState(inputList, buttonElement, obj)
 
-  // formElement.addEventListener('reset', () => {
-  //   setTimeout(() => {
-  //     toggleButtonState(inputList, buttonElement, obj)
-  //     hideInputError(formElement, inputElement, obj)
-  //   }, 0);
-  // }); 
+  formElement.addEventListener('reset', () => {
+    setTimeout(() => {
+      toggleButtonState(inputList, buttonElement, obj)
+    }, 0);
+  }); 
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', function () {

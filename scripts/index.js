@@ -44,55 +44,32 @@ const initialCards = [
     }
 ];
 
+const closeOnOverlay = (evt) => {
+    if (evt.target.classList.contains('popup_opened')) {
+        const activePopup = document.querySelector('.popup_opened');
+        closePopup(activePopup);
+    }
+};
+
+const closeOnEscape = (evt) => {
+    if (evt.key === 'Escape') {
+        const activePopup = document.querySelector('.popup_opened');
+        closePopup(activePopup);
+    }
+};
+
 function openPopup(currentPopup) {
     currentPopup.classList.add('popup_opened');
-
-    const closeOnOverlay = (evt) => {
-        if (evt.target.classList.contains('popup_opened')) {
-            closePopup(currentPopup);
-            removeEventListeners();
-        }
-    }
-
-    const closeOnEscape = (evt) => {
-        if (evt.key === 'Escape') {
-            closePopup(currentPopup);
-            removeEventListeners();
-        }
-    }
-
-    const removeEventListeners = () => {
-        document.removeEventListener("mousedown", closeOnOverlay);
-        document.removeEventListener("keydown", closeOnEscape);
-    }
 
     document.addEventListener('mousedown', closeOnOverlay);
     document.addEventListener('keydown', closeOnEscape);
 };
 
-const resetPopup = (currentPopup) => {
-    Array.from(currentPopup.querySelectorAll('.popup__text-error')).forEach((element) => {
-        element.textContent = '';
-    })
-
-    Array.from(currentPopup.querySelectorAll('.popup__text')).forEach((element) => {
-        element.classList.remove('popup__text_type_error');
-    })
-
-    Array.from(currentPopup.querySelectorAll('.popup__submit-btn')).forEach((element) => {
-        element.setAttribute('disabled', 'disabled');
-        element.classList.add('popup__submit-btn_disabled')
-    })
-
-    const currentform = currentPopup.querySelector('.popup__content')
-    currentform.reset();
-}
-
-
 function closePopup(currentPopup) {
     currentPopup.classList.remove('popup_opened');
-    resetPopup(currentPopup);
 
+    document.removeEventListener('mousedown', closeOnOverlay);
+    document.removeEventListener('keydown', closeOnEscape);
 };
 
 function submitEditProfileForm(evt) {
