@@ -5,8 +5,7 @@ export const inputUserName = document.querySelector('.popup__text_type_name');
 export const inputUserProfession = document.querySelector('.popup__text_type_profession');
 export const inputCardLink = document.querySelector('.popup__text-image')
 export const inputCardName = document.querySelector('.popup__text-name')
-export const buttonCloseEditProfile = document.querySelector('.popup__close-btn');
-export const buttonCloseAddContent = document.querySelector('#add-content-close-btn');
+export const closeButtons = document.querySelectorAll('.popup__close-btn');
 export const popupEditProfile = document.querySelector('.popup_edit-profile');
 export const popupAddContent = document.querySelector('.popup_add-content');
 export const popupPhoto = document.querySelector('.popup-photo');
@@ -15,7 +14,6 @@ export const buttonAddContent = document.querySelector('.profile__info-add-butto
 export const content = document.querySelector('.content');
 export const popupPhotoImage = document.querySelector('.popup-photo__image');
 export const popupPhotoText = document.querySelector('.popup-photo__text');
-export const popupPhotoCloseBtn = document.querySelector('#popup-photo-close-btn');
 export const initialCards = [
     {
       name: 'Архыз',

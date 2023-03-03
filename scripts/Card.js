@@ -15,25 +15,34 @@ export class Card {
         return cardElement;
     }
 
-    _setEventListeners(cardElement) {
-        cardElement.querySelector('.content__like-button').addEventListener('click', (evt) => {
-            evt.target.classList.toggle('content__like-button_type_active');
-        });
-        cardElement.querySelector('.content__delete-button').addEventListener('click', () => {
-            cardElement.remove();
-        });
+    _toggleLike(evt) {
+        evt.target.classList.toggle('content__like-button_type_active'); 
+    } 
 
-        cardElement.querySelector('.content__image').addEventListener('click', () => {
-            this.callBack(this.cardName, this.cardLink);
-        })
+    _deleteCard(evt) {
+        evt.target.closest('.content__container').remove()
+    }
+
+    _handleImageClick = () => {
+        this.callBack(this.cardName, this.cardLink);
+    }
+
+
+    _setEventListeners(cardElement) {
+        cardElement.querySelector('.content__like-button').addEventListener('click', this._toggleLike);
+
+        cardElement.querySelector('.content__delete-button').addEventListener('click', this._deleteCard);
+
+        cardElement.querySelector('.content__image').addEventListener('click', this._handleImageClick);
     }
 
     createCard() {
         this.element = this._getTemplate();
+        this._cardImage = this.element.querySelector('.content__image');
 
-        this.element.querySelector('.content__image').src = this.cardLink
+        this._cardImage.src = this.cardLink
         this.element.querySelector('.content__text').textContent = this.cardName
-        this.element.querySelector('.content__image').alt = 'Картинка ' + this.cardName;
+        this._cardImage.alt = 'Картинка ' + this.cardName;
 
         this._setEventListeners(this.element)
         
