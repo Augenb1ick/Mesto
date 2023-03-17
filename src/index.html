@@ -4,16 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mesto</title>
-  <link rel="stylesheet" href="./pages/index.css">
 </head>
 <body class="body" style="background-color: black;">
     <div class="root">
         <header class="header">
-            <img class="header__logo" src="./images/logo.svg" alt="лого">
+            <img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="лого">
         </header>
         <main>
             <section class="profile">
-                <img class="profile__image" src="./images/kusto.jpg" alt="Аватар">
+                <img class="profile__image" src="<%=require('./images/kusto.jpg')%>" alt="Аватар">
                 <div class="profile__info">
                     <div class="profile__container">
                         <h1 class="profile__info-heading">Жак-Ив Кусто</h1>
@@ -34,10 +33,10 @@
         <div class="popup__container">
             <form class="popup__content" name="edit" novalidate>
                 <h2 class="popup__heading">Редактировать профиль</h2>
-                <input type="text" class="popup__text popup__text_type_name" name="edit-name" id="edit-name" placeholder="Имя" minlength="2" maxlength="40" required>
-                <span class="popup__text-error edit-name-error"></span>
-                <input type="text" class="popup__text popup__text_type_profession" name="edit-profession" id="edit-profession" placeholder="О себе" minlength="2" maxlength="400" required>
-                <span class="popup__text-error edit-profession-error"></span>
+                <input type="text" class="popup__text popup__text_type_name" name="editName" id="editName" placeholder="Имя" minlength="2" maxlength="40" required>
+                <span class="popup__text-error editName-error"></span>
+                <input type="text" class="popup__text popup__text_type_profession" name="editInfo" id="editInfo" placeholder="О себе" minlength="2" maxlength="400" required>
+                <span class="popup__text-error editInfo-error"></span>
                 <button class="popup__submit-btn" type="submit" name="submit">Сохранить</button>
             </form>
             <button class="popup__close-btn" type="button" name="close"></button>
@@ -47,10 +46,10 @@
         <div class="popup__container">
             <form class="popup__content" name="add" id="add-content" novalidate>
                 <h2 class="popup__heading">Новое место</h2> 
-                <input type="text" class="popup__text popup__text-name" id="add-name" name="add-name" placeholder="Название" minlength="2" maxlength="30" required onclick="reset">
-                <span class="popup__text-error add-name-error"></span>
-                <input type="url" class="popup__text popup__text-image" id="add-photo" name="add-photo" placeholder="Ссылка на картинку" required>
-                <span class="popup__text-error add-photo-error"></span>
+                <input type="text" class="popup__text popup__text-name" id="name" name="name" placeholder="Название" minlength="2" maxlength="30" required onclick="reset">
+                <span class="popup__text-error name-error"></span>
+                <input type="url" class="popup__text popup__text-image" id="link" name="link" placeholder="Ссылка на картинку" required>
+                <span class="popup__text-error link-error"></span>
                 <button class="popup__submit-btn popup__submit-btn_disabled" type="submit" name="add-btn" id="add-btn" disabled>Создать</button>
             </form>
             <button class="popup__close-btn" type="button" name="add-content-close-btn" id="add-content-close-btn"></button>
@@ -73,9 +72,5 @@
             <button class="popup__close-btn" type="button" name="popup-photo-close-btn" id="popup-photo-close-btn"></button>
         </div>
     </div>
-    <script type="module" src="./scripts/constans.js"></script>
-    <script type="module" src="./scripts/FormValidator.js"></script>
-    <script type="module" src="./scripts/card.js"></script>        
-    <script type="module" src="./scripts/index.js"></script>
 </body>
 </html>

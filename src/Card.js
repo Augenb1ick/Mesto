@@ -1,9 +1,10 @@
-export class Card {
-    constructor(cardData, templateId, callBack) {
+
+export default class Card {
+    constructor(cardData, templateId, handleCardClick) {
         this.cardName = cardData.name;
         this.cardLink = cardData.link
         this.templateId = templateId;
-        this.callBack = callBack;
+        this.handleCardClick = handleCardClick;
     }
 
     _getTemplate() {
@@ -24,7 +25,7 @@ export class Card {
     }
 
     _handleImageClick = () => {
-        this.callBack(this.cardName, this.cardLink);
+        this.handleCardClick(this.cardName, this.cardLink);
     }
 
 
