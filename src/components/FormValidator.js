@@ -2,6 +2,8 @@ export default class FormValidator {
     constructor(obj, formElement) {
         this.obj = obj;
         this.formElement = formElement;
+        this.inputList = Array.from(formElement.querySelectorAll(obj.inputSelector));
+        this.buttonElement = formElement.querySelector(obj.submitButtonSelector);
     }
     _showInputError(formElement, inputElement, errorMessage, obj) {
         const errorElement = formElement.querySelector(`.${inputElement.id}-error`);;
@@ -42,21 +44,18 @@ export default class FormValidator {
     }
       
     _setEventListeners (formElement, obj) {
-        const inputList = Array.from(formElement.querySelectorAll(obj.inputSelector));
-        const buttonElement = formElement.querySelector(obj.submitButtonSelector);
-        
-        this._toggleButtonState(inputList, buttonElement, obj)
+        this._toggleButtonState(this.inputList, this.buttonElement, obj)
       
         formElement.addEventListener('reset', () => {
           setTimeout(() => {
-            this._toggleButtonState(inputList, buttonElement, obj)
+            this._toggleButtonState(this.inputList, this.buttonElement, obj)
           }, 0);
         }); 
       
-        inputList.forEach((inputElement) => {
+        this.inputList.forEach((inputElement) => {
           inputElement.addEventListener('input', () => {
             this._checkInputValidity(formElement, inputElement, obj);
-            this._toggleButtonState(inputList, buttonElement, obj);
+            this._toggleButtonState(this.inputList, this.buttonElement, obj);
           });
         });
     };
@@ -67,5 +66,12 @@ export default class FormValidator {
         });
         this._setEventListeners(this.formElement, this.obj);
     
+    }
+
+    resetValidation () {
+      this._toggleButtonState(this.inputList, this.buttonElement, this.obj);
+      this.inputList.forEach((inputElement) => {
+        this._hideInputError(this.formElement, inputElement, this.obj)
+      });
     }
 }
