@@ -1,0 +1,13 @@
+.profile__image-edit-btn {
+    height: 120px;
+    width: 120px;
+    background: url(../../../images/edit-profile-pen.png) transparent no-repeat center;
+    cursor: pointer;
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    opacity: 0;
+    border-radius: inherit;
+}

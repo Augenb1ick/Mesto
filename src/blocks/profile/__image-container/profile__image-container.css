@@ -1,0 +1,14 @@
+.profile__image-container {
+    position: relative;
+    border-radius: 50%;
+    display: flex;
+}
+
+.profile__image-container:hover .profile__image {
+    opacity: 0.2;
+    z-index: 1;
+}
+
+.profile__image-container:hover .profile__image-edit-btn {
+    opacity: 1;
+}

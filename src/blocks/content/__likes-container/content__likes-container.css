@@ -1,0 +1,7 @@
+.content__likes-container {
+    display: flex;
+    flex-direction: column;
+    height: 38px;
+    margin-top: auto;
+    gap: 3px;
+}
