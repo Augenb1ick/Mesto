@@ -10,4 +10,12 @@
 
     opacity: 0;
     border-radius: inherit;
+    z-index: 2;
+}
+
+@media screen and (max-width: 425px) {
+    .profile__image-edit-btn {
+        top: 42px;
+        left: 80px;
+    }
 }

@@ -1,7 +1,6 @@
 import './index.css';
-import {buttonEditProfile, popupEditProfile, popupAddContent, userName, userProfession, buttonEditAvatar,
-    buttonAddContent, formSettings, inputUserName, inputUserProfession, popupEditAvatar
-} from '../components/constans.js';
+import {buttonEditProfile, popupEditProfile, popupAddContent, buttonEditAvatar, buttonAddContent, formSettings, inputUserName, inputUserProfession, popupEditAvatar
+} from '../utils/Constants.js';
 import FormValidator from '../components/FormValidator.js';
 
 import Card from '../components/Card.js';

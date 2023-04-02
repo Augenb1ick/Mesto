@@ -5,7 +5,6 @@
     border-radius: inherit;
     margin: 42px auto 26px auto;
     transition: opacity 0.4s ease;
-    z-index: 3;
 }
 
 @media screen and (min-width: 768px) {
