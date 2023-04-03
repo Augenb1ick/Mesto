@@ -16,8 +16,7 @@ class Api {
         return fetch(`${this._baseUrl}/cards`, {
             headers: this._headers
         })
-        .then(res => this._checkResponse(res))
-        .catch((err) => {console.log(err)});     
+        .then(res => this._checkResponse(res))     
     }
 
     getUserInfo() {
@@ -25,7 +24,6 @@ class Api {
             headers: this._headers
         })
         .then(res => this._checkResponse(res))
-        .catch((err) => {console.log(err)});
     }
 
     editProfileInfo(profileName, profileInfo) {
@@ -38,7 +36,6 @@ class Api {
             }) 
         })
         .then(res => this._checkResponse(res))
-        .catch((err) => {console.log(err)});
     }
 
     editAvatar(avatarLink) {
@@ -50,7 +47,6 @@ class Api {
               }) 
         })
         .then(res => this._checkResponse(res))
-        .catch((err) => {console.log(err)});
     }
     
     postCard(CardName, CardLink) {
@@ -63,7 +59,6 @@ class Api {
               })    
         })
         .then(res => this._checkResponse(res))
-        .catch((err) => {console.log(err)});
     }
 
     deleteCard(cardId) {
@@ -71,8 +66,7 @@ class Api {
             method: 'DELETE',
             headers: this._headers 
         })
-        .then(res => this._checkResponse(res))
-        .catch((err) => {console.log(err)});         
+        .then(res => this._checkResponse(res))       
     }
 
     addLike(cardId) {
@@ -81,7 +75,6 @@ class Api {
             headers: this._headers 
         })
         .then(res => this._checkResponse(res))
-        .catch((err) => {console.log(err)});
     }
     
     deleteLike(cardId) {
@@ -90,9 +83,6 @@ class Api {
             headers: this._headers 
         })
         .then(res => this._checkResponse(res))
-        .catch((err) => {
-            console.log(err);
-        });
     }    
 }
 

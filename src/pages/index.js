@@ -11,13 +11,27 @@ import PopupWithConfirmation from '../components/PopupWithConfirmation.js';
 import UserInfo from '../components/UserInfo.js';
 import {api} from '../components/Api';
 
-const popupWithConfirmation = new PopupWithConfirmation('.popup_delete-content')
-popupWithConfirmation.setEventListeners();
+let userId;
 
-api.getUserInfo().then((data) => {
-    userInfo.setUserAvatar(data.avatar)
-    userInfo.setUserInfo(data)
-})
+const cardList = new Section ({
+    items: {},
+    renderer: () => {},
+}, '.content')
+
+
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+    .then(([userData, initialCards]) => {
+        userInfo.setUserAvatar(userData.avatar)
+        userInfo.setUserInfo(userData)
+        userId = userData._id
+
+        cardList.setItems(initialCards)
+        cardList.setRenderer((item) => {    
+            cardList.addItem(createCard(item));
+        })
+        cardList.renderItems()
+    })
+    .catch((err) => console.log(err))
 
 
 const createCard = (item) => {
@@ -25,7 +39,7 @@ const createCard = (item) => {
         cardData: item, 
         templateId: '#card-template', 
         handleCardClick: imagePopup.open,
-        handelDeleteIconClick: (card) => {
+        handleDeleteIconClick: (card) => {
             popupWithConfirmation.open();
             popupWithConfirmation.setConfirmAction(() => {
                 api.deleteCard(card.cardId).then(() => {
@@ -34,33 +48,17 @@ const createCard = (item) => {
                 })
                 .catch((err) => console.log(err))
             })
-        }
+        },
+        userID: userId,
+        handleDeleteLike: (cardId) => {return api.deleteLike(cardId)},
+        handleAddLike: (cardId) => {return api.addLike(cardId)},
     })
     const cardElement = card.createCard()
     return cardElement
 }
 
-
 const userInfo = new UserInfo('.profile__info-heading', '.profile__info-subheading', '.profile__image');
 const imagePopup = new PopupWithImage('.popup-photo');
-
-const cardList = new Section ({
-    items: {},
-    renderer: () => {},
-}, '.content')
-
-
-
-api.getInitialCards().then(data => {
-    const InitialcardList = new Section ({
-    items: data,
-    renderer: (item) => {        
-        cardList.addItem(createCard(item));
-    },
-}, '.content')
-InitialcardList.renderItems()
-})
-
 
 
 const profilePopup = new PopupWithForm({
@@ -71,11 +69,10 @@ const profilePopup = new PopupWithForm({
             userInfo.setUserInfo(res)
             profilePopup.close()
         })
+        .catch((err) => {console.log(err)})
         .finally(() => {profilePopup.showLoading(false)})
-        
     }
 })
-
 
 const contentPopup = new PopupWithForm({
     popupSelector: '.popup_add-content',
@@ -85,8 +82,8 @@ const contentPopup = new PopupWithForm({
             cardList.addItemToStart(createCard(res))
             contentPopup.close()
         })
+        .catch((err) => {console.log(err)})
         .finally(() => {contentPopup.showLoading(false)})
-        
     }
 })
 
@@ -98,11 +95,10 @@ const avatarPopup = new PopupWithForm ({
             avatarPopup.close()
             userInfo.setUserAvatar(res.avatar)
         })
+        .catch((err) => {console.log(err)})
         .finally(() => {avatarPopup.showLoading(false)})
     }
 })
-
-
 
 const popupEditProfileForm = new FormValidator(formSettings, popupEditProfile);
 popupEditProfileForm.enableValidation();
@@ -113,6 +109,8 @@ popupAddContentForm.enableValidation()
 const popupEditAvatarForm = new FormValidator(formSettings, popupEditAvatar);
 popupEditAvatarForm.enableValidation()
 
+const popupWithConfirmation = new PopupWithConfirmation('.popup_delete-content')
+popupWithConfirmation.setEventListeners();
 
 buttonEditProfile.addEventListener('click', () => {
     profilePopup.open();
