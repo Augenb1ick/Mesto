@@ -11,7 +11,7 @@
 
 **Figma**
 
-* [Ссылка на макет в Figma](hhttps://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=28212%3A2&t=g5CLIaQsuENLBl6v-0)
+* [Ссылка на макет в Figma](https://www.figma.com/file/mLw7NB5s1Aj5q67VeCqvIq/JavaScript.-Sprint-4-(Copy)?node-id=0-1)
 
 **GitHub Pages**
 * [Ссылка на проект в GitHub Pages](https://augenb1ick.github.io/mesto/)
